@@ -1,15 +1,15 @@
 "use strict";
 const express = require("express");
-const bodyParser = require("body-parser");
-const morgan = require("morgan");
-const fetch = require("isomorphic-fetch");
-const axios = require("axios").default;
+const bodyParser = require("body-parser"); 
+const morgan = require("morgan"); // Helps with error message
+const fetch = require("isomorphic-fetch"); //Uses fetch in express, from browser.
 
 require("dotenv").config();
 const recipeCategoryRoutes = require('./routes/recipeCategory');
 
 const app = express();
 
+// Allows us to do CRUD in BE
 app.use(function (req, res, next) {
     res.header(
       "Access-Control-Allow-Methods",
@@ -21,11 +21,11 @@ app.use(function (req, res, next) {
     );
     next();
   })
+
 app.use(morgan("tiny"))
 app.use(express.static("./server/assets"))
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: false }))
-
 
   // app.use('/recipe/category', recipeCategoryRoutes);
   
@@ -33,50 +33,13 @@ app.get("/", function(req,res){
     res.send("hello from server")
   })
 
-
-// const getRecipe= async (q,id,key) =>{
-//   const URL = `https://api.edamam.com/search?${q}&app_id=${id}&app_key=${key}`
-//   const options = {
-//     headers:{
-//       "Accept": "application/json",
-//       "Content-Type": "application/json"
-//     }
-//   }
-//   const res =  await fetch(URL, options)
-//   return res.json();
-// }
-
-function getRecipe() {
-  const response = axios.get('https://api.edamam.com/search', {
-    //  headers:{
-    //    Accept: application/json,
-    //    Content-Type: application/json
-    //    },
-      params: {
-        app_key:process.env.app_key,
-        app_id:process.env.app_id,
-        q:"pizza"
-      }
-    })
-    .then(function (response) {
-      console.log(response.data.hits)
-      // console.log(response.statusCode);
-    })
-    .catch(function (error) {
-      console.log("error");
-    })
-    .then(function () {
-      // always executed
-    }); 
+// Fetching data from third party API.
+const getData = async (q) => {
+  const url = `https://api.edamam.com/search?q=${q}&app_id=${process.env.app_id}&app_key=${process.env.app_key}&from=0&to=10`;
+  const response = await fetch(url)
+  return response.json();
 }
-
-// getRecipe()
-
-// const test = getRecipe("pizza",process.env.app_id,process.env.app_key)
-//   .then(res=> res));
-
-//   console.log(test);
-
+getData("pizza").then(res => console.log(res));
 
 
 app.listen(8080, () => {

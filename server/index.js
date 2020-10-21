@@ -5,7 +5,7 @@ const morgan = require("morgan"); // Helps with error message
 const fetch = require("isomorphic-fetch"); //Uses fetch in express, from browser.
 
 require("dotenv").config();
-const recipeCategoryRoutes = require('./routes/recipeCategory');
+const recipeCategoryRoutes = require('./routes/recipeCategory/all');
 
 const app = express();
 
@@ -33,12 +33,7 @@ app.get("/", function(req,res){
     res.send("hello from server")
   })
 
-// Fetching data from third party API.
-const getData = async (q) => {
-  const url = `https://api.edamam.com/search?q=${q}&app_id=${process.env.app_id}&app_key=${process.env.app_key}&from=0&to=10`;
-  const response = await fetch(url)
-  return response.json();
-}
+
 getData("pizza").then(res => console.log(res));
 
 

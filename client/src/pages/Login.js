@@ -43,7 +43,7 @@ const Login = () =>{
         <form onSubmit={handleSubmit}>
           <h1>
             Login to
-          <Link to="/">Chatty</Link>
+          <Link to="/"> Chef Hacker</Link>
           </h1>
           <p>Fill in the form below to login to your account.</p>
           <div>

@@ -10,9 +10,12 @@ import  GlobalStyles  from './components/GlobalStyles';
 import { theme } from './components/THEMES';
 
 import Home from './pages/Home';
-import Chat from './pages/Chat';
+import Recipes from './pages/Recipes';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Contact from './pages/Contact';
+import About from './pages/About';
+
 import { auth } from './services/firebase';
 
 import Burger from './components/Burger';
@@ -45,7 +48,7 @@ import { useOnClickOutside } from './hooks';
           authenticated === false ? (
             <Component {...props} />
           ) : (
-            <Redirect to="/chat" />
+            <Redirect to="/recipes" />
           )
         }
       />
@@ -89,12 +92,15 @@ import { useOnClickOutside } from './hooks';
               </div>
             </Nav>
 
-            {/* This will make certain route available only if you are authenticated, "Chat". */}
+            {/* This will make certain route available only if you are authenticated, "Recipes". */}
             <Switch>
                 <Route exact path="/" component={Home}></Route>
-                <PrivateRoute path="/chat" authenticated={authenticated} component={Chat}></PrivateRoute>
+                <Route exact path="/recipe" component={Home}></Route>
+                <PrivateRoute path="/recipes" authenticated={authenticated} component={Recipes}></PrivateRoute>
                 <PublicRoute path="/signup" authenticated={authenticated} component={Signup}></PublicRoute>
                 <PublicRoute path="/login" authenticated={authenticated} component={Login}></PublicRoute>
+                <PublicRoute path="/contact" authenticated={authenticated} component={Contact}></PublicRoute>
+                <PublicRoute path="/about" authenticated={authenticated} component={About}></PublicRoute>
             </Switch>
 
             </Router>

@@ -1,6 +1,6 @@
 const routes = require("express").Router();
 
-const recipeCategory = require("./recipeCategory");
+const getRecipePizza = require("./recipe-pizza");
 
 routes.get("/", (req, res) => {
   try {
@@ -16,8 +16,8 @@ routes.get("/", (req, res) => {
   }
 });
 
-routes.use("/recipe-category", recipeCategory);
-routes.use("/random-stuff", recipeCategory);
+routes.use("/recipe/pizza", getRecipePizza);
+// routes.use("/random-stuff", recipeCategory);
 
 
 

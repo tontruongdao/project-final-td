@@ -17,6 +17,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 
 import { auth } from './services/firebase';
+import {AuthContext} from './components/AuthContext'
 
 import Burger from './components/Burger';
 import Menu from './components/Menu';
@@ -57,28 +58,25 @@ import { useOnClickOutside } from './hooks';
   // ##################################################################################
   const App = () => {
 
-    // Logic to verify if user is authenticated
-    const [loading, setLoading] = React.useState(true);
-    const [authenticated, setAuthenticated] = React.useState(false);
-
+    const {authenticated, loading} = React.useContext(AuthContext)
 
     // Burger state
     const [open, setOpen] = useState(false);
     const node = useRef(); 
     useOnClickOutside(node, () => setOpen(false));
 
-    React.useEffect(() => {
-      console.log("[Apps.js] Mounted");
-      auth().onAuthStateChanged((user) => {
-        if (user) {
-          setLoading(false);
-          setAuthenticated(true);
-        } else {
-          setLoading(false);
-          setAuthenticated(false);
-        }
-      });
-    }, []);
+    // React.useEffect(() => {
+    //   console.log("[Apps.js] Mounted");
+    //   auth().onAuthStateChanged((user) => {
+    //     if (user) {
+    //       setLoading(false);
+    //       setAuthenticated(true);
+    //     } else {
+    //       setLoading(false);
+    //       setAuthenticated(false);
+    //     }
+    //   });
+    // }, []);
     return  (
       <ThemeProvider theme={theme}>
         <>

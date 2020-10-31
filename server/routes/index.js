@@ -16,7 +16,7 @@ routes.get("/", (req, res) => {
   }
 });
 
-routes.use("/recipe/pizza", getRecipePizza);
+routes.use("/recipe", getRecipePizza);
 // routes.use("/random-stuff", recipeCategory);
 
 

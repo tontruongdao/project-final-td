@@ -3,32 +3,42 @@ const express = require('express');
 
 require("dotenv").config();
 
-// Fetching data from third party API.
 const getData = async (q) => {
-    const url = `https://api.edamam.com/search?q=${q}&app_id=${process.env.app_id}&app_key=${process.env.app_key}&from=0&to=10`;
-    const response = await fetch(url)
-    // console.log(response.json());
-    return response.json();
+  
+  const response = await fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?&number=10&offset=0&query=${q}`, {
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-host": `${process.env.app_host}`,
+      "x-rapidapi-key": `${process.env.app_key2}`
+    }
+  })
+  
+  return response.json();
+
 }
 
 module.exports = async (req, res) => {
-    
-    let data = await getData("pizza");
 
-    console.log("Starting HERE");
-    console.log("FETCh COMPLETED");
-    console.log(data);
+  const query = req.params.recipe;
 
-    try {
-      return res.status(200).json({
-        success: true,
-        message: "Connected!",
-        data: data,
-      });
-    } catch (err) {
-      return res.status(500).json({
-        success: false,
-        error: "Server Error",
-      });
-    }
+  console.log("Going to fetch:", query);
+  
+  let data = await getData(query);
+
+  console.log("Starting HERE");
+  console.log("FETCh COMPLETED");
+  console.log(data);
+
+  try {
+    return res.status(200).json({
+      success: true,
+      message: "Connected!",
+      data: data,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: "Server Error",
+    });
+  }
 };

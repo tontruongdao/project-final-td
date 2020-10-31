@@ -16,12 +16,16 @@ import Login from './pages/Login';
 import Contact from './pages/Contact';
 import About from './pages/About';
 
+import Pizza from './pages/recipe/Pizza'
+
 import { auth } from './services/firebase';
 import {AuthContext} from './components/AuthContext'
 
 import Burger from './components/Burger';
 import Menu from './components/Menu';
+import { FiHome } from "react-icons/fi";
 import { useOnClickOutside } from './hooks';
+
 
   // ########################## HOC WRAPPING COMPONENTS #################################
   // Wrapping components made available if user is authenticated
@@ -84,21 +88,23 @@ import { useOnClickOutside } from './hooks';
             <Router>
 
             <Nav ref={node}>
-              <div>
+              <>
                 <Burger open={open} setOpen={setOpen} />
                 <Menu open={open} setOpen={setOpen} />  
-              </div>
+                <a href="/"><FiHome size={40} color={"gray"}/></a>
+                <div>SearchBar</div>
+              </>
             </Nav>
 
             {/* This will make certain route available only if you are authenticated, "Recipes". */}
             <Switch>
                 <Route exact path="/" component={Home}></Route>
-                <Route exact path="/recipe" component={Home}></Route>
+                <Route exact path="/recipe/pizza" component={Pizza}></Route>
                 <PrivateRoute path="/recipes" authenticated={authenticated} component={Recipes}></PrivateRoute>
                 <PublicRoute path="/signup" authenticated={authenticated} component={Signup}></PublicRoute>
                 <PublicRoute path="/login" authenticated={authenticated} component={Login}></PublicRoute>
-                <PublicRoute path="/contact" authenticated={authenticated} component={Contact}></PublicRoute>
-                <PublicRoute path="/about" authenticated={authenticated} component={About}></PublicRoute>
+                <Route path="/contact"  component={Contact}></Route>
+                <Route path="/about" component={About}></Route>
             </Switch>
 
             </Router>
@@ -108,12 +114,12 @@ import { useOnClickOutside } from './hooks';
   };
 
   const Nav = styled.div`
+    align-items: center;
     border: solid red 1px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
     height: 60px;
+    justify-content: space-between;
+    padding: 15px;
   `
 
   export default App;

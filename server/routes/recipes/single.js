@@ -12,10 +12,13 @@ const getData = async (q) => {
         "x-rapidapi-key": `${process.env.app_key2}`
 	}
 })
-  
   return response.json();
-
 }
+
+// const getData = async () => {
+//   const response = "single item was fetched"
+//   return(response)
+// }
 
 module.exports = async (req, res) => {
 
@@ -26,7 +29,7 @@ module.exports = async (req, res) => {
   let data = await getData(query);
 
   console.log("Starting HERE");
-  console.log("FETCh COMPLETED");
+  console.log("FETCH COMPLETED");
   console.log(data);
 
   try {

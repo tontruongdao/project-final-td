@@ -10,13 +10,14 @@ import  GlobalStyles  from './components/GlobalStyles';
 import { theme } from './components/THEMES';
 
 import Home from './pages/Home';
-import Recipes from './pages/Recipes';
+import MyRecipes from './pages/MyRecipes';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Contact from './pages/Contact';
 import About from './pages/About';
 
-import Pizza from './pages/recipe/Pizza'
+import Recipes from './pages/recipe/Recipes'
+import Recipe from "./pages/recipe/Recipe";
 
 import { auth } from './services/firebase';
 import {AuthContext} from './components/AuthContext'
@@ -53,7 +54,7 @@ import { useOnClickOutside } from './hooks';
           authenticated === false ? (
             <Component {...props} />
           ) : (
-            <Redirect to="/recipes" />
+            <Redirect to="/my-recipes" />
           )
         }
       />
@@ -99,8 +100,9 @@ import { useOnClickOutside } from './hooks';
             {/* This will make certain route available only if you are authenticated, "Recipes". */}
             <Switch>
                 <Route exact path="/" component={Home}></Route>
-                <Route exact path="/recipe/pizza" component={Pizza}></Route>
-                <PrivateRoute path="/recipes" authenticated={authenticated} component={Recipes}></PrivateRoute>
+                <Route exact path="/recipe/:recipe" component={Recipes}></Route>
+                <Route exact path="/recipe/:recipe/:id" component={Recipe}></Route>
+                <PrivateRoute path="/my-recipes" authenticated={authenticated} component={MyRecipes}></PrivateRoute>
                 <PublicRoute path="/signup" authenticated={authenticated} component={Signup}></PublicRoute>
                 <PublicRoute path="/login" authenticated={authenticated} component={Login}></PublicRoute>
                 <Route path="/contact"  component={Contact}></Route>

@@ -1,24 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
-
+import {AuthContext} from "../AuthContext";
+import {signout} from "../../helpers/auth";
 import { bool } from 'prop-types';
 
-const Menu = ({open}) => {
+
+
+const Menu = ({open, setOpen}) => {
+  const {authenticated} = React.useContext(AuthContext);
     return (
       <StyledMenu open={open}>
-        <a href="/">
+        <Link to="/" onClick={()=> setOpen(false)}>
           Home
-        </a>
-        <a href="/login">
-          Login
-        </a>
-        <a href="/about">
+        </Link>
+        {!authenticated && <Link to="/login" onClick={()=> setOpen(false)}>
+          Login</Link>}
+
+        <Link to="/about" onClick={()=> setOpen(false)}>
           About Us
-          </a>
-        <a href="/contact">
+          </Link>
+        <Link to="/contact" onClick={()=> setOpen(false)}>
           Contact
-          </a>
+          </Link>
+        {authenticated && <button onClick={()=> {
+          setOpen(false)
+          signout();
+          }}>Sign Out</button>}
       </StyledMenu>
     )
   }

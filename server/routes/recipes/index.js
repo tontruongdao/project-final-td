@@ -2,9 +2,10 @@ const getRecipes = require("express").Router();
 const all = require("./all");
 const single = require("./single");
 
-// /recipe-category /
-getRecipes.get("/:recipe", all);
-getRecipes.get("/:recipe/:id", single);
+// /recipe
+getRecipes.get("/category/:recipe", all);
+getRecipes.get("/:id", single);
+
 // getRecipePizza.get("/recipe-category/:_id", single);
 
 //  Route is actually /recipe-category/recipe-category/menu/item

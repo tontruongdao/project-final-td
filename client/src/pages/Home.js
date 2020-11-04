@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from "react-router-dom"
 const Home = () => {
 
     return(
@@ -7,7 +7,7 @@ const Home = () => {
             Home
             <ul>
                 <li>
-                    <a href="/recipe/pizza">Pizza</a>
+                    <Link to="/pizza">Pizza</Link>
                 </li>
                 <li>
                     <a href="#">Sandwich</a>

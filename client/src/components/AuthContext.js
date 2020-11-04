@@ -9,14 +9,21 @@ const AuthProvider = ({children}) => {
     // Logic to verify if user is authenticated
     const [loading, setLoading] = React.useState(true);
     const [authenticated, setAuthenticated] = React.useState(false);
+    const [email, setEmail] = React.useState(null);
+    const [userID, setUserID] = React.useState(null);
 
     React.useEffect(() => {
-        console.log("[Apps.js] Mounted");
+        // console.log("[Apps.js] Mounted");
         auth().onAuthStateChanged((user) => {
+        console.log("[AuthContext.js] user profile", user);
           if (user) {
+            setUserID(user.uid);
+            setEmail(user.email);
             setLoading(false);
             setAuthenticated(true);
           } else {
+            setUserID(null);
+            setEmail("")
             setLoading(false);
             setAuthenticated(false);
           }
@@ -25,7 +32,7 @@ const AuthProvider = ({children}) => {
 
 
     return(
-        <AuthContext.Provider value={{authenticated, loading}}>
+        <AuthContext.Provider value={{authenticated, loading, email, userID}}>
             {children}
         </AuthContext.Provider>)
 }

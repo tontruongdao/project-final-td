@@ -1,6 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
+import Spinner from "../../components/Spinner"
+
 const Recipes = () =>{
 
     const [loading,setLoading] = React.useState(true)
@@ -14,7 +16,7 @@ const Recipes = () =>{
     }
 
     React.useEffect(()=>{
-        console.log("Recipes component is loaded");
+        console.log(`${recipeCategory}`);
         
     const url = window.location.pathname.split("/");
     const recipeName = url[url.length-1];
@@ -38,7 +40,7 @@ const Recipes = () =>{
                 )
             })}
         </div>
-    ) : <h1>No recipe</h1>
+    ) : <Spinner/>
     ) 
 };
 export default Recipes

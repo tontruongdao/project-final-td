@@ -1,4 +1,4 @@
-import React, { Component, useState, useRef } from 'react';
+import React from 'react';
 
 import { auth } from '../services/firebase';
 
@@ -11,6 +11,7 @@ const AuthProvider = ({children}) => {
     const [authenticated, setAuthenticated] = React.useState(false);
     const [email, setEmail] = React.useState(null);
     const [userID, setUserID] = React.useState(null);
+    const [recipeCount, setRecipeCount] = React.useState(null)
 
     React.useEffect(() => {
         // console.log("[Apps.js] Mounted");
@@ -19,20 +20,20 @@ const AuthProvider = ({children}) => {
           if (user) {
             setUserID(user.uid);
             setEmail(user.email);
-            setLoading(false);
             setAuthenticated(true);
+            setLoading(false);
           } else {
             setUserID(null);
             setEmail("")
-            setLoading(false);
             setAuthenticated(false);
+            setLoading(false);
           }
         });
       }, []);
 
 
     return(
-        <AuthContext.Provider value={{authenticated, loading, email, userID}}>
+        <AuthContext.Provider value={{authenticated, loading, email, userID, recipeCount, setRecipeCount}}>
             {children}
         </AuthContext.Provider>)
 }

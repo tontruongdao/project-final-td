@@ -74,7 +74,7 @@ const StyledMenu = styled.nav`
     }
 
     &:hover {
-      color: ${({ theme }) => theme.primaryHover};
+      color: lightgrey;
     }
   }
 `;

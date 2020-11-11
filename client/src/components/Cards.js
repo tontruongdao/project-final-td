@@ -45,7 +45,7 @@ const Container = styled.div`
     box-shadow: 0 1.5rem 4rem gray;
     flex:1;
     position: relative;
-    z-index: 1;
+    z-index: -20000;
 
     transition: all 1s;
 

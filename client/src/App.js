@@ -9,7 +9,7 @@ import {
 import styled, {ThemeProvider } from 'styled-components';
 import  GlobalStyles  from './components/GlobalStyles';
 import { theme } from './components/THEMES';
-import {db, auth} from './services/firebase'
+import { db, auth } from './services/firebase'
 
 import Home from './pages/Home';
 import MyRecipes from './pages/MyRecipes';
@@ -22,7 +22,7 @@ import Recipes from './pages/recipe/Recipes'
 import Recipe from "./pages/recipe/Recipe";
 
 
-import {AuthContext} from './components/AuthContext'
+import { AuthContext } from './components/AuthContext'
 
 import Burger from './components/Burger';
 import Menu from './components/Menu';

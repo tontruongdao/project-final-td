@@ -13,6 +13,9 @@ const Menu = ({open, setOpen}) => {
         <Link to="/" onClick={()=> setOpen(false)}>
           Home
         </Link>
+        {authenticated && <Link to="/my-recipes" onClick={()=> setOpen(false)}>
+          My Recipes
+        </Link>}
         {!authenticated && <Link to="/login" onClick={()=> setOpen(false)}>
           Login</Link>}
         <Link to="/about" onClick={()=> setOpen(false)}>
@@ -21,9 +24,6 @@ const Menu = ({open, setOpen}) => {
         <Link to="/contact" onClick={()=> setOpen(false)}>
           Contact
           </Link>
-        {authenticated && <Link to="/my-recipes" onClick={()=> setOpen(false)}>
-          My Recipes
-        </Link>}
         {authenticated && <LogoutButton onClick={()=> {
           setOpen(false)
           signout();

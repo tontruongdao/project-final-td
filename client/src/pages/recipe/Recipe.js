@@ -4,6 +4,8 @@ import {AuthContext} from "../../components/AuthContext";
 
 import Spinner from "../../components/Spinner"
 
+
+
 const Recipe = () => {  
     const {userID, setRecipeCount} = React.useContext(AuthContext);
     const [loading, setLoading] = React.useState(true)
@@ -27,18 +29,22 @@ const Recipe = () => {
     }
 
     React.useEffect(()=>{
-        console.log("Recipe component is loaded");
+        // console.log("Recipe component is loaded");
         
     const url = window.location.pathname.split("/");
     // const recipeName = url[url.length-2];
     const id = url[url.length-1];
-    console.log(url, id)
+    // console.log(url, id)
     // console.log(recipeName);
     setRecipeId(id)
     fetchRecipe(id)
     },[])
 
-    console.log(singleRecipe)
+    // console.log(singleRecipe)
+
+    const test = {"object": "keys" }
+
+    console.log(test);
 
     if(loading){
         return <h1>Loading...</h1>
@@ -49,7 +55,8 @@ const Recipe = () => {
             {recipeTitle}
             <button onClick={() => addRecipe(recipeTitle, recipeId)}>Add this Recipe</button>
         </div>
-        ) : <Spinner/>
+        ) : <div>Test</div>
+        // <Spinner/>
     ) 
 }
 

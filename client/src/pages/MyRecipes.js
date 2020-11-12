@@ -27,14 +27,14 @@ const MyRecipes = () =>{
     const [recipeList, setRecipeList] = useState(null);
 
     React.useEffect(() => {
-        console.log("My userid is:", userID)
+        // console.log("My userid is:", userID)
         db.ref(`/users/${userID}/MyRecipes`).on("value", snapshot => {
                 // "snapshop is the unformated database, val returns the actual data."
                 const data = snapshot.val();
                 if(data){
                   const recipes = Object.values(data);
                   setRecipeList(recipes);
-                  console.log("Here is my recipe list",recipes);
+                //   console.log("Here is my recipe list",recipes);
                 }
               })
     }, [userID]);

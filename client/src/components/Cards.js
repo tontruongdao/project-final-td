@@ -45,7 +45,7 @@ const Container = styled.div`
     box-shadow: 0 1.5rem 4rem gray;
     flex:1;
     position: relative;
-    z-index: -20000;
+    z-index: 1;
 
     transition: all 1s;
 
@@ -63,7 +63,7 @@ const Header = styled.div`
   background-size: cover;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
   position: relative;
-  z-index: -1;
+  z-index: -10000;
 
   & h1 {
     position:absolute;

@@ -16,7 +16,7 @@ const AuthProvider = ({children}) => {
     React.useEffect(() => {
         // console.log("[Apps.js] Mounted");
         auth().onAuthStateChanged((user) => {
-        console.log("[AuthContext.js] user profile", user);
+        // console.log("[AuthContext.js] user profile", user);
           if (user) {
             setUserID(user.uid);
             setEmail(user.email);

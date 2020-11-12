@@ -21,7 +21,6 @@ import About from './pages/About';
 import Recipes from './pages/recipe/Recipes'
 import Recipe from "./pages/recipe/Recipe";
 
-
 import { AuthContext } from './components/AuthContext'
 
 import Burger from './components/Burger';
@@ -75,14 +74,14 @@ import { useOnClickOutside } from './hooks';
     useOnClickOutside(node, () => setOpen(false));
 
     React.useEffect(() => {
-        console.log("My userid is:", userID)
+        // console.log("My userid is:", userID)
         db.ref(`/users/${userID}/MyRecipes`).on("value", snapshot => {
                 // "snapshop is the unformated database, val returns the actual data."
                 const data = snapshot.val();
                 if(data){
                   const countOfRecipes = Object.values(data).length;
                   setCount(countOfRecipes);
-                  console.log("Here is my count",countOfRecipes);
+                  // console.log("Here is my count",countOfRecipes);
                 }
               })
     }, [userID]);
@@ -101,11 +100,11 @@ import { useOnClickOutside } from './hooks';
                 
                 <div>
                 {!authenticated && 
-                  <LoginLink to="login">Login</LoginLink>
+                  <LoginLink to="/login">Login</LoginLink>
                 }
 
                 {authenticated && 
-                  <NavUser>
+                  <NavUser to="/my-recipes">
                     <IoIosRestaurant size={40} color={theme.primaryLight}/>
                     <Count >{count}</Count>
                   </NavUser>
@@ -144,13 +143,15 @@ import { useOnClickOutside } from './hooks';
     background: none;
   `
 
-  const NavUser = styled.div`
+  const NavUser = styled(Link)`
     display:flex;
     justify-content:center;
     align-items: center;
+    text-decoration: none;
   `
   const Count = styled.span`
     color: ${theme.primaryLight};
+
   `
   const LoginLink = styled(Link)`
     color: ${theme.primaryLight};

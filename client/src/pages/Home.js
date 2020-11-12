@@ -36,7 +36,7 @@ const Home = () => {
                     </HeaderText>
                 </HeaderTextContainer>
             </Header>
-
+            <Link to="/test">test</Link>
             <SectionText>Our Favorites</SectionText>
             <ContainerWrapper>
                 <Cards 
@@ -83,7 +83,6 @@ const Home = () => {
                     link="/vegan"   
                 />
             </ContainerWrapper>
-
             <Footer/>
         </Wrapper>)
 

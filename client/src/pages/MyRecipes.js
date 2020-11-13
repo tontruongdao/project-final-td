@@ -123,7 +123,7 @@ const HeaderTextPrim = styled.span`
 
   animation-name: ${moveInLeft};
   animation-duration: 2s;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
 `
 const Text = styled.div`
     display:flex;

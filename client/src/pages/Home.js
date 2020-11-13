@@ -20,6 +20,8 @@ import veganImage from "../.pics/vegan.jpg"
 import Cards  from "../components/Cards"
 import Footer from "../components/Footer"
 
+import RecipeTest from "../pages/recipe/RecipeTest"
+
 const Home = () => {
 
     return(
@@ -163,7 +165,7 @@ const HeaderTextPrim = styled.span`
 
   animation-name: ${moveInLeft};
   animation-duration: 2s;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
 `
 
 const HeaderTextSec = styled.span`
@@ -173,7 +175,7 @@ const HeaderTextSec = styled.span`
 
   animation-name: ${moveInRight};
   animation-duration: 2s;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
 `
 
 const SectionText = styled.h1`

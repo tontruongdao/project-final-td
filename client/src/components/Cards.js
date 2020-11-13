@@ -4,8 +4,6 @@ import { Link } from "react-router-dom"
 
 import { theme }  from "./THEMES"
 
-import pizzaImage from "../.pics/pizza.jpg"
-
 const Card = (props) => {
     return(
         <Container>
@@ -35,12 +33,12 @@ const Card = (props) => {
 const Container = styled.div`
     text-align:center;
     background-color: #d3d2d270;
-    min-width: 17vw;
-    margin: 5vh 13vw;
+    min-width: 15vw;
+    margin: 13vh 13vw;
     padding-top: 5vh;
     padding-bottom: 5vh;
-    padding-right: 2vw;
-    padding-left: 2vw;
+    padding-right: 3vw;
+    padding-left: 3vw;
     border-radius: 5px;
     box-shadow: 0 1.5rem 4rem gray;
     flex:1;

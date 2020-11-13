@@ -44,7 +44,7 @@ const StyledMenu = styled.nav`
   background: ${({ theme }) => theme.primaryLight};
   height: 100vh;
   text-align: left;
-  padding: 2rem;
+  padding: 1rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -58,7 +58,7 @@ const StyledMenu = styled.nav`
   }
 
   a {
-    font-size: 2rem;
+    font-size: 1.6rem;
     text-transform: uppercase;
     padding: 2rem 0;
     font-weight: bold;
@@ -80,7 +80,7 @@ const StyledMenu = styled.nav`
 `;
 
 const LogoutButton = styled.button`
-    font-size: 2rem;
+    font-size: 1.6rem;
     text-transform: uppercase;
     padding: 2rem 0;
     font-weight: bold;

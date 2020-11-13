@@ -21,6 +21,8 @@ import About from './pages/About';
 import Recipes from './pages/recipe/Recipes'
 import Recipe from "./pages/recipe/Recipe";
 
+import RecipeTest from "./pages/recipe/RecipeTest";
+
 import { AuthContext } from './components/AuthContext'
 
 import Burger from './components/Burger';
@@ -118,6 +120,7 @@ import { useOnClickOutside } from './hooks';
                 <Route exact path="/" component={Home}></Route>
                 <Route exact path="/#" component={Contact}></Route>
                 <Route exact path="/#" component={About}></Route>
+                <Route exact path="/test" component={RecipeTest}></Route>
                 <PrivateRoute exact path="/my-recipes" authenticated={authenticated} component={MyRecipes} reroute={"/"}></PrivateRoute>
                 <PrivateRoute exact path="/recipe/:id" authenticated={authenticated} component={Recipe} reroute={"/"}></PrivateRoute>
                 <PublicRoute exact path="/signup" authenticated={authenticated} component={Signup} reroute={"/"}></PublicRoute>

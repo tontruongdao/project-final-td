@@ -32,11 +32,11 @@ const MyRecipes = () =>{
                 // "snapshop is the unformated database, val returns the actual data."
                 const data = snapshot.val();
                 if(data){
-                  const recipes = Object.values(data);
-                  setRecipeList(recipes);
+                const recipes = Object.values(data);
+                setRecipeList(recipes);
                 //   console.log("Here is my recipe list",recipes);
                 }
-              })
+        })
     }, [userID]);
 
     return( recipeList ? ( 
@@ -48,6 +48,8 @@ const MyRecipes = () =>{
                     </HeaderText>
                 </HeaderTextContainer>
             </Header>
+
+            
             {recipeList.map((item, i) => {
                 return(
                     <Text>
@@ -64,7 +66,24 @@ const MyRecipes = () =>{
             {/* <button onClick={signout}>Signout</button> */}
             <Footer/>
         </Wrapper> 
-        ) : <Spinner/>
+        ) : 
+        (
+        <Wrapper>
+            <Header>
+                <HeaderTextContainer>
+                    <HeaderText>
+                        <HeaderTextPrim>My Selection</HeaderTextPrim>
+                    </HeaderText>
+                </HeaderTextContainer>
+            </Header>
+
+                <ContainerText >
+                    You do not have any saved recipes!        
+                </ContainerText>
+            <Footer/>
+        </Wrapper>
+        )                       
+        // <Spinner/>
     )
 }
 
@@ -161,4 +180,16 @@ const ContainerLink = styled(Link)`
         opacity: 1;
     }
 `
+
+const ContainerText = styled.div`
+    color: grey;
+    text-decoration: none;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 30px;
+    text-align: center;
+    opacity: 0.5;
+    margin-bottom: 10vh;
+`
+
 export default MyRecipes

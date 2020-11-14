@@ -4,6 +4,9 @@ import {Link} from "react-router-dom"
 
 import { theme }  from "../components/THEMES"
 
+import { db } from "../services/firebase";
+import { AuthContext } from "../components/AuthContext";
+
 import hacker from "../.pics/hacker.jpg"
 import mainLogo from "../.pics/chefHacker.png"
 
@@ -24,6 +27,37 @@ import RecipeTest from "../pages/recipe/RecipeTest"
 
 const Home = () => {
 
+
+    //##################################### React Hooks ###############################
+
+    const {userID, setRecipeCount} = React.useContext(AuthContext);
+
+    const [recipeList, setRecipeList] = React.useState(null);
+
+    //##################################### React Hooks ###############################
+
+    //##################################### HELPERS ###############################
+
+    function readRecipe(){
+
+        db.ref(`/users`).on("value", snapshot => {
+
+            const data = snapshot.val();
+
+            if(data){
+                const recipes = Object.values(data);
+                setRecipeList(recipes);
+                console.log("Here is my recipe list",recipes);
+            }
+        })
+    }
+
+    function compileData(){
+        console.log("I compile data")
+    }
+
+    //##################################### HELPERS ###############################
+
     return(
         <Wrapper>
             {/* <Img src={hacker} alt="hacker"/> */}
@@ -39,6 +73,12 @@ const Home = () => {
                 </HeaderTextContainer>
             </Header>
             <Link to="/test">test</Link>
+            {userID && 
+            <div>
+                <button onClick={() => readRecipe()}>Read</button>
+                <button onClick={() => compileData()}>CompileData</button>
+            </div>
+            }
             <SectionText>Our Favorites</SectionText>
             <ContainerWrapper>
                 <Cards 

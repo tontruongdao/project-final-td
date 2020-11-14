@@ -84,6 +84,8 @@ import { useOnClickOutside } from './hooks';
                   const countOfRecipes = Object.values(data).length;
                   setCount(countOfRecipes);
                   // console.log("Here is my count",countOfRecipes);
+                } else {
+                  setCount(0)
                 }
               })
     }, [userID]);

@@ -98,49 +98,48 @@ const Recipe = () => {
     return ( recipeTitle && singleRecipe && steps ? (
 
         <Wrapper >
-            <div>
-                {recipeTitle}
-                <div>{singleRecipe.id}</div>
-                {/* <Button disabled={hasRecipe} onClick={() => addRecipe(recipeTitle, recipeId)}>Add this Recipe!</Button>                 */}
-            </div>
             <SectionPrim>
-                <Header image={singleRecipe.image}>
-                    <HeaderInfo>
-                        <div>Cooking Time: {singleRecipe.readyInMinutes}</div>
-                        <div>Health Score: {singleRecipe.healthScore}</div>
-                    </HeaderInfo>
-                    <div>
-                        <Button disabled={hasRecipe} onClick={() => addRecipe(recipeTitle, recipeId)}>Add this Recipe!</Button>   
-                        <Button onClick={() => readRecipe()}>Read Recipe</Button>      
-                        <Button disabled={!hasRecipe} onClick={() => removeRecipe(recipeId)}>Remove this Recipe</Button>   
-                    </div>
-                </Header>
-                <div>
-                    <h1>{singleRecipe.title}</h1>
+                <FirstContainer>
+                    <Image image={singleRecipe.image}/>
+                    <ButtonContainer>
+                        <Button disabled={hasRecipe} onClick={() => addRecipe(recipeTitle, recipeId)} >+</Button>
+                        <Button style={{color: "#800020"}} disabled={!hasRecipe} onClick={() => removeRecipe(recipeId)}>-</Button>
+                    </ButtonContainer>                   
+                </FirstContainer>
+                <SecondContainer>
+                    <Title>{recipeTitle}</Title>
                     {singleRecipe.extendedIngredients.map((ingredient) => {
-                        return(
+                    return(
                             <ul>
-                                <li >       
+                                <Text>       
                                     - {ingredient.originalName}
-                                </li>
+                                </Text>
                             </ul>
                         )
                     })}
-                </div>
+                </SecondContainer>
             </SectionPrim>
             <SectionSec>
-                <div>   
-                    {steps.map((step) => {
-                        return(
-                            <ul>
-                                <li >       
-                                    {step.step}
-                                </li>
-                            </ul>
+                    <div>
+                        <h2>Cooking Time: </h2>
+                        <div>{singleRecipe.readyInMinutes}</div>                        
+                    </div>
+                    <div>
+                        <h2>Health Score:</h2>
+                        <div> {singleRecipe.healthScore}</div>
+                    </div>
+            </SectionSec>
+            <SectionTrd>   
+                {steps.map((step) => {
+                    return(
+                        <Instructions>
+                            <InstructionsText >       
+                                - {step.step}
+                            </InstructionsText>
+                        </Instructions>
                         )
                     })}
-                </div>
-            </SectionSec>
+            </SectionTrd>
             <Footer/>
         </Wrapper>
         ) :  <Spinner/>
@@ -150,45 +149,120 @@ const Recipe = () => {
 const Wrapper = styled.div`
     /* border: 5px solid red; */
     width: 95vw;
-    margin: 0 auto;
+    margin: 5vh auto;
     min-height: 110vh;
+    border-radius: 5px;
 `
 
 const SectionPrim = styled.div `
+    padding-top: 5vh;
     min-height: 50vh;
     display: flex;
     justify-content: space-between;
-
+    box-shadow: 0 0.1rem 0.5rem ${theme.primaryLight};
 `
 
-const Header = styled.div`
-    width: 35%;
-    height: 30vh;
-    background: 
-    linear-gradient(to right bottom, white, #01161036),
-    url(${props => props.image});
+const FirstContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+const Image = styled.div`
+    
+    margin-top: 5vh;
+    margin-left: 5vw;
+    width: 35vw;
+    height: 50vh;
+    background: url(${props => props.image});
     background-size: cover;
+    box-shadow: 0 0rem 1rem gray;
 
     display: flex;
     flex-direction: column;
-    color: #011610a4;
+    align-items: center;
+    justify-content: flex-end;
+    color: ${theme.primaryLight};
 
 `
-const HeaderInfo = styled.div`
-    display: flex;
+const ButtonContainer = styled.div`
+    margin-left: 5vw;
+    margin-bottom: 4vh;
+    opacity: 0.75;
 `
+
 
 const Button = styled.button`
+    border:none;
+    background: none;
+    margin-right: 2vw;
+    margin-left: 2vw;
+    transition: 0.5s ease-in;
+    color: #04351a;
+    font-size: 4rem;
+    opacity: 0.5;
+
     &:hover:enabled {
-        background: blue;
+        opacity: 1;
     }
     &:hover:disabled {
-        background: red;
+        /* background: red; */
     }
 `;
 
-const SectionSec = styled.div `
+const SecondContainer = styled.div`
+    margin-left: 5vw;
+    margin-right: 5vw;
+    width: 40vw;
+`
 
+const Title = styled.h1`
+    color: ${theme.primaryLight};
+    font-size: 2rem;
+    letter-spacing: 2px;
+    padding-bottom: 5vh;
+`
+
+const Text = styled.li`
+    color: gray;
+    letter-spacing: 1px;
+    word-wrap: break-word;
+    margin-top: 0.5vh;
+`
+
+const SectionSec = styled.div `
+    margin-top: 6vh;
+    margin-bottom: 6vh;
+    display:flex;
+    justify-content: space-around;
+
+    
+    & h2 {
+        font-size: 1.5rem;
+        color: ${theme.primaryLight};
+    }
+
+    & div {
+        color: gray;
+        font-size: 1.2rem;
+        text-align: center;
+        font-weight: bold;
+    }
+`
+
+const SectionTrd = styled.div`
+    margin-bottom: 8vh;
+`
+
+const Instructions = styled.ul`
+    padding-left: 5vw;
+`
+
+const InstructionsText = styled.li`
+    color: ${theme.primaryLight};
+    letter-spacing: 1px;
+    word-wrap: break-word;
+    margin-top: 1vh;
 `
 
 export default Recipe

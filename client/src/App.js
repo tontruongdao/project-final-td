@@ -17,6 +17,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Contact from './pages/Contact';
 import About from './pages/About';
+import Careers from './pages/Careers';
 
 import Recipes from './pages/recipe/Recipes'
 import Recipe from "./pages/recipe/Recipe";
@@ -120,9 +121,10 @@ import { useOnClickOutside } from './hooks';
             {/* This will make certain route available only if you are authenticated, "Recipes". */}
             <Switch>
                 <Route exact path="/" component={Home}></Route>
-                <Route exact path="/#" component={Contact}></Route>
-                <Route exact path="/#" component={About}></Route>
-                <Route exact path="/test" component={RecipeTest}></Route>
+                <Route exact path="/contact" component={Contact}></Route>
+                <Route exact path="/about" component={About}></Route>
+                <Route exact path="/careers" component={Careers}></Route>                
+                {/* <Route exact path="/test" component={RecipeTest}></Route> */}
                 <PrivateRoute exact path="/my-recipes" authenticated={authenticated} component={MyRecipes} reroute={"/"}></PrivateRoute>
                 <PrivateRoute exact path="/recipe/:id" authenticated={authenticated} component={Recipe} reroute={"/"}></PrivateRoute>
                 <PublicRoute exact path="/signup" authenticated={authenticated} component={Signup} reroute={"/"}></PublicRoute>

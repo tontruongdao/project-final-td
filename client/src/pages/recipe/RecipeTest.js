@@ -2,8 +2,11 @@ import React, {useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import {db} from "../../services/firebase";
 import {AuthContext} from "../../components/AuthContext";
+
+
 import { theme }  from "../../components/THEMES"
 import Footer from "../../components/Footer"
+
 
 import {test, steps} from './test'
 
@@ -70,94 +73,176 @@ const RecipeTest = () =>{
     return(
         <Wrapper>
             <SectionPrim>
-                <Header>
-                    <HeaderInfo>
-                        <div>Cooking Time: {test.readyInMinutes}</div>
-                        <div>Health Score: {test.healthScore}</div>
-                    </HeaderInfo>
-                    <div>
+                <FirstContainer>
+                    <Image/>
+                    <ButtonContainer>
                         {/* {!hasRecipe && <button onClick={() => addRecipe(test.title, test.id)} >Add</button> }
                         <button onClick={() => readRecipe()}>Read</button>
                         {hasRecipe && <button onClick={() => removeRecipe(test.id)}>Remove</button> } */}
-                        <Button disabled={hasRecipe} onClick={() => addRecipe(test.title, test.id)} >Add</Button>
-                        <Button onClick={() => readRecipe()}>Read</Button>
-                        <Button disabled={!hasRecipe} onClick={() => removeRecipe(test.id)}>Remove</Button>
-                    </div>
-                </Header>
-                <div>
-                    <h1>{test.title}</h1>
+                        <Button disabled={hasRecipe} onClick={() => addRecipe(test.title, test.id)} >+</Button>
+                            {/* <Button onClick={() => readRecipe()}>Read</Button> */}
+                        <Button style={{color: "#800020"}} disabled={!hasRecipe} onClick={() => removeRecipe(test.id)}>-</Button>
+                    </ButtonContainer>                   
+                </FirstContainer>
+                <SecondContainer>
+                    <Title>{test.title}</Title>
                     {test.extendedIngredients.map((ingredient) => {
                     return(
                             <ul>
-                                <li >       
+                                <Text>       
                                     - {ingredient.originalName}
-                                </li>
+                                </Text>
                             </ul>
                         )
                     })}
-                </div>
+                </SecondContainer>
             </SectionPrim>
             <SectionSec>
-                <div>   
-                    {steps.map((step) => {
-                        return(
-                            <ul>
-                                <li >       
-                                    {step.step}
-                                </li>
-                            </ul>
+                    <div>
+                        <h2>Cooking Time: </h2>
+                        <div>{test.readyInMinutes}</div>                        
+                    </div>
+                    <div>
+                        <h2>Health Score:</h2>
+                        <div> {test.healthScore}</div>
+                    </div>
+            </SectionSec>
+
+            <SectionTrd>   
+                {steps.map((step) => {
+                    return(
+                        <Instructions>
+                            <InstructionsText >       
+                                - {step.step}
+                            </InstructionsText>
+                        </Instructions>
                         )
                     })}
-                </div>
-            </SectionSec>
+            </SectionTrd>
             <Footer/>
         </Wrapper>
         )
 }
 
-const Button = styled.button`
-    &:hover:enabled {
-        background: blue;
-    }
-    &:hover:disabled {
-        background: red;
-    }
-`;
+
 
 const Wrapper = styled.div`
     /* border: 5px solid red; */
     width: 95vw;
-    margin: 0 auto;
+    margin: 5vh auto;
     min-height: 110vh;
-`
+    border-radius: 5px;
+    `
 
 const SectionPrim = styled.div `
-    min-height: 50vh;
-    display: flex;
-    justify-content: space-between;
+        padding-top: 5vh;
+        min-height: 50vh;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: 0 0.1rem 0.5rem ${theme.primaryLight};
+    `
 
+const FirstContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
-const Header = styled.div`
-    width: 35%;
-    height: 30vh;
-    background: 
-    linear-gradient(to right bottom, white, #01161036),
-    url(${test.image});
+const Image = styled.div`
+    
+    margin-top: 5vh;
+    margin-left: 5vw;
+    width: 35vw;
+    height: 50vh;
+    background: url(${test.image});
     background-size: cover;
+    box-shadow: 0 0rem 1rem gray;
 
     display: flex;
     flex-direction: column;
-    color: #011610a4;
+    align-items: center;
+    justify-content: flex-end;
+    color: ${theme.primaryLight};
 
 `
-const HeaderInfo = styled.div`
-    display: flex;
+
+const ButtonContainer = styled.div`
+    margin-left: 5vw;
+    margin-bottom: 4vh;
+    opacity: 0.75;
 `
 
+const Button = styled.button`
+    border:none;
+    background: none;
+    margin-right: 2vw;
+    margin-left: 2vw;
+    transition: 0.5s ease-in;
+    color: #04351a;
+    font-size: 4rem;
+    opacity: 0.5;
+
+    &:hover:enabled {
+        opacity: 1;
+    }
+    &:hover:disabled {
+        /* background: red; */
+    }
+`;
+
+const SecondContainer = styled.div`
+    margin-left: 5vw;
+    margin-right: 5vw;
+`
+
+const Title = styled.h1`
+    color: ${theme.primaryLight};
+    font-size: 2rem;
+    letter-spacing: 2px;
+    padding-bottom: 5vh;
+`
+
+const Text = styled.li`
+    color: gray;
+    letter-spacing: 1px;
+    word-wrap: break-word;
+    margin-top: 0.5vh;
+`
 
 const SectionSec = styled.div `
+    margin-top: 6vh;
+    margin-bottom: 6vh;
+    display:flex;
+    justify-content: space-around;
 
+    
+    & h2 {
+        font-size: 1.5rem;
+        color: ${theme.primaryLight};
+    }
+
+    & div {
+        color: gray;
+        font-size: 1.2rem;
+        text-align: center;
+        font-weight: bold;
+    }
 `
+
+const SectionTrd = styled.div`
+    margin-bottom: 8vh;
+`
+
+const Instructions = styled.ul`
+    padding-left: 5vw;
+`
+
+const InstructionsText = styled.li`
+    color: ${theme.primaryLight};
+    letter-spacing: 1px;
+    word-wrap: break-word;
+    margin-top: 1vh;
+`
+
 
 export default RecipeTest

@@ -8,9 +8,9 @@ const Footer = () => {
   return (
     <Wrapper>
       <TopRow>
-        <Link to="/">Home</Link>
-        <Link to="/#">Careers</Link>
-        <Link to="/#">About Us</Link>
+        <StyledLink to="/">Home</StyledLink>
+        <StyledLink to="/careers">Careers</StyledLink>
+        <StyledLink to="/about">About Us</StyledLink>
       </TopRow>
       <BottomRow>
         <Image src={mainLogo} alt="Logo" />
@@ -29,9 +29,10 @@ const Wrapper = styled.div`
   min-height: 15vh;
   /* position: absolute; */
   width: 100%;
-    color: #0a4431bd;
-  margin-top: 25px;
+  color: #0a4431bd;
+  margin-top: 5vh;
 
+  padding-top: 3vh;
   padding-right: 10vw;
   padding-left: 10vw;
 
@@ -56,10 +57,7 @@ const TopRow = styled.div`
     padding: 0 10px;
     text-decoration: none;
     color: #0a4431bd;
-    &:hover {
-      text-decoration: underline;
     }
-  }
 `;
 
 const BottomRow = styled.div`
@@ -80,21 +78,18 @@ const Image = styled.img`
   width: 50px;
 `;
 
+const StyledLink = styled(Link)`
+  opacity: 0.70;
+  letter-spacing: 2px;
+  font-weight: bold;
+  transition: 0.5s ease-in;
+  text-decoration: none;
+
+  :hover{
+    opacity:1;
+    text-decoration: none;
+  }
+
+`
+
 export default Footer;
-
-
-
-// const Footer = () => {
-//     return(
-//         <Container>
-//             Footer
-//         </Container>
-//     )
-// }
-
-// const Container = styled.div`
-//     border: solid red 1px;
-//     flex:1;
-// `
-
-// export default Footer

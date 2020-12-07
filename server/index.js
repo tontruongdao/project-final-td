@@ -1,10 +1,12 @@
 "use strict";
 const express = require("express");
 const bodyParser = require("body-parser"); 
+const path = require("path");
 const morgan = require("morgan"); // Helps with error message
 const fetch = require("isomorphic-fetch"); //Uses fetch in express, from browser.
 const routes = require('./routes')
 
+const buildPath = path.join(__dirname, "..", "client/build");
 // const recipeCategoryRoutes = require('./routes/recipeCategory/index');
 
 const app = express();
@@ -23,7 +25,7 @@ app.use(function (req, res, next) {
   })
 
 app.use(morgan("tiny"))
-app.use(express.static("./server/assets"))
+// app.use(express.static("./server/assets"))
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: false }))
   
@@ -33,8 +35,11 @@ app.use(express.urlencoded({ extended: false }))
 
 
 // getData("pizza").then(res => console.log(res));
-app.use('/', routes);
-
+app.use('/api', routes);
+app.use(express.static(buildPath));
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 //  /recipe-category
 
 app.listen(8080, () => {

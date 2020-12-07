@@ -21,7 +21,7 @@ const Recipe = () => {
     const [recipeList, setRecipeList] = React.useState(null);
 
     const fetchRecipe = (q) => {
-        fetch(`/recipe/${q}`).then(res => res.json()).then(json=>{
+        fetch(`/api/recipe/${q}`).then(res => res.json()).then(json=>{
             console.log("[SINGLE RECIPE]", json);
             setRecipeTitle(json.data.title)
             setSingleRecipe(json.data);

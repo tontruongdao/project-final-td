@@ -25,6 +25,8 @@ import Footer from "../components/Footer"
 
 import RecipeTest from "../pages/recipe/RecipeTest"
 
+import TopRecipe from "../components/TopRecipe";
+
 const Home = () => {
 
 
@@ -61,6 +63,7 @@ const Home = () => {
     return(
         <Wrapper>
             {/* <Img src={hacker} alt="hacker"/> */}
+            {/* <TopRecipe/> */}
             <Header>
                 <LogoContainer>
                     <Logo src={mainLogo} alt="chefhacker"/>
@@ -84,22 +87,22 @@ const Home = () => {
                 <Cards 
                     image={pizzaImage}
                     logo={pizzaLogo}
-                    text1="Pizza"
+                    text1="Pasta"
                     text2="Classic"
                     text3="Tasty"
                     text4="Meaty"
                     text5="Difficulty: Moderate"
-                    link="/pizza"    
+                    link="/pasta"    
                 />
                 <Cards 
                     image={sandwichImage}
                     logo={sandwichLogo}
-                    text1="Sandwich"
+                    text1="Chicken"
                     text2="Time Saving"
                     text3="Crunchy"
                     text4="Meaty"
                     text5="Difficulty: Easy"
-                    link="/sandwich"   
+                    link="/chicken"   
                 />
             </ContainerWrapper>
 
@@ -107,22 +110,22 @@ const Home = () => {
                 <Cards 
                     image={ramenImage}
                     logo={ramenLogo}
-                    text1="Ramen"
+                    text1="Seafood"
                     text2="Umami taste!"
                     text3="Tasty"
                     text4="Meaty"
                     text5="Difficulty: Hard"
-                    link="/ramen"   
+                    link="/seafood"   
                 />
                 <Cards 
                     image={veganImage} 
                     logo={veganLogo}
-                    text1="Vegan"
+                    text1="Vegetarian"
                     text2="Environment-friendly"
                     text3="Low carbon footprint"
                     text4="!Meaty"
                     text5="Difficulty: Extreme"
-                    link="/vegan"   
+                    link="/vegetarian"   
                 />
             </ContainerWrapper>
             <Footer/>

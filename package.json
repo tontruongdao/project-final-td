@@ -3,5 +3,12 @@
     "firebase": "^7.23.0",
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0"
+  },
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "cd server && yarn start",
+    "start": "cd server && node index.js",
+    "build": "(cd client && yarn install && yarn build) && (cd server && yarn install)",
+    "begin": "(yarn build) && (yarn server)"
   }
 }

@@ -16,7 +16,7 @@ const Recipes = () =>{
 
     const fetchRecipe = (q) => {
         // THIS IS BACKEND 
-        fetch(`/recipe/category/${q}`).then(res => res.json()).then(json=>setRecipe(json.data.results)) 
+        fetch(`/api/recipe/category/${q}`).then(res => res.json()).then(json=>setRecipe(json.data.results)) 
         setLoading(false)
     }
 

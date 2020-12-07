@@ -4,6 +4,9 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const morgan = require("morgan"); // Helps with error message
 const fetch = require("isomorphic-fetch"); //Uses fetch in express, from browser.
+
+const port = process.env.PORT || 8080;
+
 const routes = require('./routes')
 
 const buildPath = path.join(__dirname, "..", "client/build");
@@ -42,6 +45,6 @@ app.get("*", function (req, res) {
 });
 //  /recipe-category
 
-app.listen(8080, () => {
-    console.info(`Server up and running on port 8080`);
+app.listen(port, () => {
+    console.info(`Server up and running on port ${port}`);
   });

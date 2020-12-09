@@ -87,22 +87,22 @@ const Home = () => {
                 <Cards 
                     image={pizzaImage}
                     logo={pizzaLogo}
-                    text1="Pasta"
+                    text1="Pizza"
                     text2="Classic"
                     text3="Tasty"
                     text4="Meaty"
                     text5="Difficulty: Moderate"
-                    link="/pasta"    
+                    link="/pizza"    
                 />
                 <Cards 
                     image={sandwichImage}
                     logo={sandwichLogo}
-                    text1="Chicken"
+                    text1="Sandwich"
                     text2="Time Saving"
                     text3="Crunchy"
                     text4="Meaty"
                     text5="Difficulty: Easy"
-                    link="/chicken"   
+                    link="/sandwich"   
                 />
             </ContainerWrapper>
 
@@ -110,22 +110,22 @@ const Home = () => {
                 <Cards 
                     image={ramenImage}
                     logo={ramenLogo}
-                    text1="Seafood"
+                    text1="Ramen"
                     text2="Umami taste!"
                     text3="Tasty"
                     text4="Meaty"
                     text5="Difficulty: Hard"
-                    link="/seafood"   
+                    link="/ramen"   
                 />
                 <Cards 
                     image={veganImage} 
                     logo={veganLogo}
-                    text1="Vegetarian"
+                    text1="Vegan"
                     text2="Environment-friendly"
                     text3="Low carbon footprint"
                     text4="!Meaty"
                     text5="Difficulty: Extreme"
-                    link="/vegetarian"   
+                    link="/vegan"   
                 />
             </ContainerWrapper>
             <Footer/>

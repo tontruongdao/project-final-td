@@ -75,13 +75,13 @@ const Home = () => {
                     </HeaderText>
                 </HeaderTextContainer>
             </Header>
-            {/* <Link to="/test">test</Link>
+            <Link to="/test">test</Link>
             {userID && 
             <div>
                 <button onClick={() => readRecipe()}>Read</button>
                 <button onClick={() => compileData()}>CompileData</button>
             </div>
-            } */}
+            }
             <SectionText>Our Favorites</SectionText>
             <ContainerWrapper>
                 <Cards 
@@ -181,6 +181,8 @@ const Header = styled.div`
   margin-bottom: 9%;
   position: relative;
   z-index: -1;
+
+
 `
 const HeaderTextContainer = styled.div`
   display: flex;
@@ -235,32 +237,36 @@ const ContainerWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     min-height: 30vh;
+
+    @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
-const PizzaContainer = styled.div`
-    background-color: grey;
-    min-width: 15vw;
-    min-height: 60vh;
-    margin: 5vh 12vw;
-    padding: 15px 20px;
+// const PizzaContainer = styled.div`
+//     background-color: grey;
+//     min-width: 15vw;
+//     min-height: 60vh;
+//     margin: 5vh 12vw;
+//     padding: 15px 20px;
 
-    flex:1;
-    position: relative;
-    z-index: 1;
+//     flex:1;
+//     position: relative;
+//     z-index: 1;
 
-`
-const SandwichContainer = styled.div`
-    background-color: grey;
-    min-width: 15vh;
-    min-height: 60vh;
-    margin: 5vh 12vw;
-    padding: 15px 20px;
+// `
+// const SandwichContainer = styled.div`
+//     background-color: grey;
+//     min-width: 15vh;
+//     min-height: 60vh;
+//     margin: 5vh 12vw;
+//     padding: 15px 20px;
 
-    flex:1;
-    position: relative;
-    z-index: 1;
+//     flex:1;
+//     position: relative;
+//     z-index: 1;
 
-`
+// `
 // const RamenContainer = styled.div`
 //     background-color: grey;
 //     margin: 5vh 10w;

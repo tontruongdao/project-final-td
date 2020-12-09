@@ -47,6 +47,7 @@ const Container = styled.div`
 
     transition: all 1s;
 
+
     &:hover {
         background-color: #14a87754;
         opacity:0.75;
@@ -62,6 +63,12 @@ const Header = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
   position: relative;
   z-index: -10000;
+
+
+  @media (max-width: 768px) {
+    clip-path: none;
+    z-index: 1000000;
+  }
 
   & h1 {
     position:absolute;

@@ -184,6 +184,13 @@ const Image = styled.div`
     justify-content: flex-end;
     color: ${theme.primaryLight};
 
+    @media (max-width: 768px) {
+    margin-top: 1vh;
+    margin-left: 1vw;
+    width: 80%;
+    height: 50vh;
+    }
+
 `
 const ButtonContainer = styled.div`
     margin-left: 5vw;

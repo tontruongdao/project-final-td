@@ -140,6 +140,13 @@ const SectionPrim = styled.div `
         display: flex;
         justify-content: space-between;
         box-shadow: 0 0.1rem 0.5rem ${theme.primaryLight};
+
+
+
+        @media (max-width: 768px) {
+        flex-direction: column;
+        }
+
     `
 
 const FirstContainer = styled.div`
@@ -163,6 +170,14 @@ const Image = styled.div`
     align-items: center;
     justify-content: flex-end;
     color: ${theme.primaryLight};
+
+
+    @media (max-width: 768px) {
+    margin-top: 1vh;
+    margin-left: 1vw;
+    width: 80%;
+    height: 50vh;
+    }
 
 `
 

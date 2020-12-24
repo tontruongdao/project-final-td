@@ -75,7 +75,7 @@ const Home = () => {
                     </HeaderText>
                 </HeaderTextContainer>
             </Header>
-            <Link to="/test">test</Link>
+            {/* <Link to="/test">test</Link> */}
             {userID && 
             <div>
                 <button onClick={() => readRecipe()}>Read</button>

@@ -124,7 +124,7 @@ import { useOnClickOutside } from './hooks';
                 <Route exact path="/contact" component={Contact}></Route>
                 <Route exact path="/about" component={About}></Route>
                 <Route exact path="/careers" component={Careers}></Route>                
-                <Route exact path="/test" component={RecipeTest}></Route>
+                {/* <Route exact path="/test" component={RecipeTest}></Route> */}
                 <PrivateRoute exact path="/my-recipes" authenticated={authenticated} component={MyRecipes} reroute={"/"}></PrivateRoute>
                 <PrivateRoute exact path="/recipe/:id" authenticated={authenticated} component={Recipe} reroute={"/"}></PrivateRoute>
                 <PublicRoute exact path="/signup" authenticated={authenticated} component={Signup} reroute={"/"}></PublicRoute>

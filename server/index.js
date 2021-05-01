@@ -25,7 +25,7 @@ app.use(function (req, res, next) {
       "Origin, X-Requested-With, Content-Type, Accept"
     );
     next();
-  })
+})
 
 app.use(morgan("tiny"))
 // app.use(express.static("./server/assets"))
